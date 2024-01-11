@@ -213,6 +213,29 @@ def delete_movie_by_id(): # delete movie
     except Exception as e:
         print(f"Error: {e}")
 
+def find_movie_by_id(movie_id):
+    peliculas_data = load_json('peliculas')
+
+    if peliculas_data is None or "blockbluster" not in peliculas_data or "peliculas" not in peliculas_data["blockbluster"]:
+        print("No hay películas para buscar.")
+        return
+
+    lista_peliculas = peliculas_data["blockbluster"]["peliculas"]
+
+    for movie_code, movie_data in lista_peliculas.items():
+        if movie_data["id"] == movie_id:
+            print(f'Pelicula encontrada:')
+            print(f'ID: {movie_data["id"]}')
+            print(f'Nombre: {movie_data["nombre"]}')
+            print(f'Duración: {movie_data["duracion"]}')
+            print(f'Sinopsis: {movie_data["sinopsis"]}')
+            print(f'Género: {movie_data["genero"]}')
+            print(f'Actores: {movie_data["actores"]}')
+            print(f'Formato: {movie_data["formato"]}')
+            return
+
+    print(f'No se encontró ninguna película con ID {movie_id}.')
+
 def delete_actor_by_id():
     peliculas_data = load_json('peliculas')
 
@@ -243,15 +266,19 @@ def delete_actor_by_id():
     except Exception as e:
         print(f"Error: {e}")
 
-def list_movies():
+def list_all_movies():
     peliculas_data = load_json('peliculas')
-    
-    # Accede a la información de películas bajo "peliculas" 
-    lista_movies = peliculas_data["blockbluster"]["peliculas"]
 
-    print(f'PELICULAS:')
-    for movie_code, movie_data in lista_movies.items():
+    if peliculas_data is None or "blockbluster" not in peliculas_data or "peliculas" not in peliculas_data["blockbluster"]:
+        print("No hay películas para listar.")
+        return
+
+    lista_peliculas = peliculas_data["blockbluster"]["peliculas"]
+
+    print(f'PELÍCULAS:')
+    for movie_code, movie_data in lista_peliculas.items():
         print(f'{movie_code}: {movie_data["nombre"]}')
         print('----------------------------------')
-    
-    key_to_continue()
+
+# Llamada a la función list_all_movies
+list_all_movies()

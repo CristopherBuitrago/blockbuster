@@ -1,6 +1,6 @@
 from source.actores import create_actor, list_actors
 from source.formatos import create_format, list_formats
-from source.peliculas import create_movie, delete_movie_by_id, edit_movie
+from source.peliculas import create_movie, delete_actor_by_id, delete_movie_by_id, edit_movie, find_movie_by_id, list_all_movies
 from tools.menus import *
 from tools.utils import clean_screen
 from source.generos import create_gender, list_genders
@@ -49,6 +49,17 @@ def movies ():
     elif op == 3:
         clean_screen()
         delete_movie_by_id()
+    elif op == 4:
+        clean_screen()
+        delete_actor_by_id()
+    elif op == 5:
+        clean_screen()
+        find_movie_by_id()
+    elif op == 6:
+        clean_screen()
+        list_all_movies()
+    elif op == 7:
+        print('Saliendo...')
 # START
 while True:
     clean_screen()
