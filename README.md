@@ -11,7 +11,6 @@ Welcome to the Basic CRUD Python Project! This project demonstrates a simple CRU
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ## Project Overview
